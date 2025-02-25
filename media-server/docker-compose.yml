@@ -42,7 +42,7 @@ services:
     volumes:
       - "/home/${USER}/server/configs/radarr:/config"
       - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
-      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
+      - "/home/${USER}/server/media:/data/media:rw"  # ✅ Matches Plex/Jellyfin
     restart: unless-stopped
 
   lidarr:
