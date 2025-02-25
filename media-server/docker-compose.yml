@@ -10,7 +10,7 @@ services:
       - TZ=Europe/Paris
     volumes:
       - "/home/${USER}/server/configs/jackett:/config"
-      - "/home/${USER}/server/torrents:/downloads"
+      - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
     ports:
       - "9117:9117"
     restart: unless-stopped
@@ -26,7 +26,8 @@ services:
       - "8989:8989"
     volumes:
       - "/home/${USER}/server/configs/sonarr:/config"
-      - "/home/${USER}/server:/data"
+      - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
+      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
     restart: unless-stopped
 
   radarr:
@@ -40,7 +41,8 @@ services:
       - "7878:7878"
     volumes:
       - "/home/${USER}/server/configs/radarr:/config"
-      - "/home/${USER}/server:/data"
+      - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
+      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
     restart: unless-stopped
 
   lidarr:
@@ -52,7 +54,8 @@ services:
       - TZ=Europe/Paris
     volumes:
       - "/home/${USER}/server/configs/lidarr:/config"
-      - "/home/${USER}/server:/data"
+      - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
+      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
     ports:
       - "8686:8686"
     restart: unless-stopped
@@ -66,7 +69,7 @@ services:
       - TZ=Europe/Paris
     volumes:
       - "/home/${USER}/server/configs/bazarr:/config"
-      - "/home/${USER}/server:/data"
+      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
     ports:
       - "6767:6767"
     restart: unless-stopped
@@ -83,7 +86,7 @@ services:
       - VERSION=docker
     volumes:
       - "/home/${USER}/server/configs/plex:/config"
-      - "/home/${USER}/server/media:/data/media"
+      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Radarr/Sonarr
     devices:
       - "/dev/dri/renderD128:/dev/dri/renderD128"
       - "/dev/dri/card1:/dev/dri/card1"
@@ -103,7 +106,7 @@ services:
       - "/dev/dri/card1:/dev/dri/card1"
     volumes:
       - "/home/${USER}/server/configs/jellyfin:/config"
-      - "/home/${USER}/server/media:/data/media"
+      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Radarr/Sonarr
     restart: unless-stopped
 
   overseerr:
@@ -133,7 +136,7 @@ services:
       - FLOOD_AUTH=false
     volumes:
       - "/home/${USER}/server/configs/qflood:/config"
-      - "/home/${USER}/server/torrents:/data/torrents"
+      - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches Radarr/Sonarr
     restart: unless-stopped
 
   heimdall:
