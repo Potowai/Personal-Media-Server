@@ -1,4 +1,7 @@
-jackett:
+version: "3.8"
+
+services:
+  jackett:
     container_name: jackett
     image: lscr.io/linuxserver/jackett
     environment:
@@ -6,12 +9,13 @@ jackett:
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
-      - '/home/${USER}/server/configs/jackett:/config'
-      - '/home/${USER}/server/torrents:/downloads'
+      - "/home/${USER}/server/configs/jackett:/config"
+      - "/home/${USER}/server/torrents:/downloads"
     ports:
-      - '9117:9117'
+      - "9117:9117"
     restart: unless-stopped
-sonarr:
+
+  sonarr:
     container_name: sonarr
     image: linuxserver/sonarr
     environment:
@@ -19,12 +23,13 @@ sonarr:
       - PGID=1000
       - TZ=Europe/Paris
     ports:
-      - '8989:8989'
+      - "8989:8989"
     volumes:
-      - '/home/${USER}/server/configs/sonarr:/config'
-      - '/home/${USER}/server:/data'
+      - "/home/${USER}/server/configs/sonarr:/config"
+      - "/home/${USER}/server:/data"
     restart: unless-stopped
-radarr:
+
+  radarr:
     container_name: radarr
     image: linuxserver/radarr
     environment:
@@ -32,12 +37,13 @@ radarr:
       - PGID=1000
       - TZ=Europe/Paris
     ports:
-      - '7878:7878'
+      - "7878:7878"
     volumes:
-      - '/home/${USER}/server/configs/radarr:/config'
-      - '/home/${USER}/server:/data'
+      - "/home/${USER}/server/configs/radarr:/config"
+      - "/home/${USER}/server:/data"
     restart: unless-stopped
-lidarr:
+
+  lidarr:
     container_name: lidarr
     image: ghcr.io/linuxserver/lidarr
     environment:
@@ -45,12 +51,13 @@ lidarr:
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
-      - '/home/${USER}/server/configs/liadarr:/config'
-      - '/home/${USER}/server:/data'
+      - "/home/${USER}/server/configs/lidarr:/config"
+      - "/home/${USER}/server:/data"
     ports:
-      - '8686:8686'
+      - "8686:8686"
     restart: unless-stopped
-bazarr:
+
+  bazarr:
     container_name: bazarr
     image: ghcr.io/linuxserver/bazarr
     environment:
@@ -58,29 +65,31 @@ bazarr:
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
-      - '/home/${USER}/server/configs/bazarr:/config'
-      - '/home/${USER}/server:/data'
+      - "/home/${USER}/server/configs/bazarr:/config"
+      - "/home/${USER}/server:/data"
     ports:
-      - '6767:6767'
+      - "6767:6767"
     restart: unless-stopped
-plex:
+
+  plex:
     container_name: plex
     image: ghcr.io/linuxserver/plex
     ports:
-      - '32400:32400'
+      - "32400:32400"
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Paris
       - VERSION=docker
     volumes:
-      - '/home/${USER}/server/configs/plex:/config'
-      - '/home/${USER}/server/media:/data/media'
+      - "/home/${USER}/server/configs/plex:/config"
+      - "/home/${USER}/server/media:/data/media"
     devices:
-      - '/dev/dri/renderD128:/dev/dri/renderD128'
-      - '/dev/dri/card0:/dev/dri/card0'
+      - "/dev/dri/renderD128:/dev/dri/renderD128"
+      - "/dev/dri/card0:/dev/dri/card0"
     restart: unless-stopped
-jellyfin:
+
+  jellyfin:
     container_name: jellyfin
     image: ghcr.io/linuxserver/jellyfin
     environment:
@@ -88,15 +97,16 @@ jellyfin:
       - PGID=1000
       - TZ=Europe/Paris
     ports:
-      - '8096:8096'
+      - "8096:8096"
     devices:
-      - '/dev/dri/renderD128:/dev/dri/renderD128'
-      - '/dev/dri/card0:/dev/dri/card0'
+      - "/dev/dri/renderD128:/dev/dri/renderD128"
+      - "/dev/dri/card0:/dev/dri/card0"
     volumes:
-      - '/home/${USER}/server/configs/jellyfin:/config'
-      - '/home/${USER}/server/media:/data/media'
+      - "/home/${USER}/server/configs/jellyfin:/config"
+      - "/home/${USER}/server/media:/data/media"
     restart: unless-stopped
-overseerr:
+
+  overseerr:
     container_name: overseerr
     image: ghcr.io/linuxserver/overseerr
     environment:
@@ -104,11 +114,12 @@ overseerr:
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
-      - '/home/${USER}/server/configs/overseerr:/config'
+      - "/home/${USER}/server/configs/overseerr:/config"
     ports:
-      - '5055:5055'
+      - "5055:5055"
     restart: unless-stopped
-qflood:
+
+  qflood:
     container_name: qflood
     image: hotio/qflood
     ports:
@@ -121,10 +132,11 @@ qflood:
       - TZ=Europe/Paris
       - FLOOD_AUTH=false
     volumes:
-      - '/home/${USER}/server/configs/qflood:/config'
-      - '/home/${USER}/server/torrents:/data/torrents'
+      - "/home/${USER}/server/configs/qflood:/config"
+      - "/home/${USER}/server/torrents:/data/torrents"
     restart: unless-stopped
-heimdall:
+
+  heimdall:
     container_name: heimdall
     image: ghcr.io/linuxserver/heimdall
     environment:
@@ -132,18 +144,18 @@ heimdall:
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
-      - '/home/${USER}/server/configs/heimdall:/config'
+      - "/home/${USER}/server/configs/heimdall:/config"
     ports:
-      - 8090:80
+      - "8090:80"
     restart: unless-stopped
-flaresolverr:
+
+  flaresolverr:
     container_name: flaresolverr
-    image: 'ghcr.io/flaresolverr/flaresolverr:latest'
+    image: ghcr.io/flaresolverr/flaresolverr:latest
     ports:
-      - '8191:8191'
+      - "8191:8191"
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Paris
     restart: unless-stopped
-
