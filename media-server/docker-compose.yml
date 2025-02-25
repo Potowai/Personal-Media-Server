@@ -9,8 +9,8 @@ services:
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
-      - "/home/${USER}/server/configs/jackett:/config"
-      - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
+      - "/home/user/server/configs/jackett:/config"
+      - "/home/user/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
     ports:
       - "9117:9117"
     restart: unless-stopped
@@ -25,9 +25,9 @@ services:
     ports:
       - "8989:8989"
     volumes:
-      - "/home/${USER}/server/configs/sonarr:/config"
-      - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
-      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
+      - "/home/user/server/configs/sonarr:/config"
+      - "/home/user/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
+      - "/home/user/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
     restart: unless-stopped
 
   radarr:
@@ -40,9 +40,9 @@ services:
     ports:
       - "7878:7878"
     volumes:
-      - "/home/${USER}/server/configs/radarr:/config"
-      - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
-      - "/home/${USER}/server/media:/data/media:rw"  # ✅ Matches Plex/Jellyfin
+      - "/home/user/server/configs/radarr:/config"
+      - "/home/user/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
+      - "/home/user/server/media:/data/media:rw"  # ✅ Matches Plex/Jellyfin
     restart: unless-stopped
 
   lidarr:
@@ -53,9 +53,9 @@ services:
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
-      - "/home/${USER}/server/configs/lidarr:/config"
-      - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
-      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
+      - "/home/user/server/configs/lidarr:/config"
+      - "/home/user/server/torrents:/data/torrents"  # ✅ Matches qBittorrent
+      - "/home/user/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
     ports:
       - "8686:8686"
     restart: unless-stopped
@@ -68,8 +68,8 @@ services:
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
-      - "/home/${USER}/server/configs/bazarr:/config"
-      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
+      - "/home/user/server/configs/bazarr:/config"
+      - "/home/user/server/media:/data/media"  # ✅ Matches Plex/Jellyfin
     ports:
       - "6767:6767"
     restart: unless-stopped
@@ -85,8 +85,8 @@ services:
       - TZ=Europe/Paris
       - VERSION=docker
     volumes:
-      - "/home/${USER}/server/configs/plex:/config"
-      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Radarr/Sonarr
+      - "/home/user/server/configs/plex:/config"
+      - "/home/user/server/media:/data/media"  # ✅ Matches Radarr/Sonarr
     devices:
       - "/dev/dri/renderD128:/dev/dri/renderD128"
       - "/dev/dri/card1:/dev/dri/card1"
@@ -105,8 +105,8 @@ services:
       - "/dev/dri/renderD128:/dev/dri/renderD128"
       - "/dev/dri/card1:/dev/dri/card1"
     volumes:
-      - "/home/${USER}/server/configs/jellyfin:/config"
-      - "/home/${USER}/server/media:/data/media"  # ✅ Matches Radarr/Sonarr
+      - "/home/user/server/configs/jellyfin:/config"
+      - "/home/user/server/media:/data/media"  # ✅ Matches Radarr/Sonarr
     restart: unless-stopped
 
   overseerr:
@@ -117,7 +117,7 @@ services:
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
-      - "/home/${USER}/server/configs/overseerr:/config"
+      - "/home/user/server/configs/overseerr:/config"
     ports:
       - "5055:5055"
     restart: unless-stopped
@@ -135,8 +135,8 @@ services:
       - TZ=Europe/Paris
       - FLOOD_AUTH=false
     volumes:
-      - "/home/${USER}/server/configs/qflood:/config"
-      - "/home/${USER}/server/torrents:/data/torrents"  # ✅ Matches Radarr/Sonarr
+      - "/home/user/server/configs/qflood:/config"
+      - "/home/user/server/torrents:/data/torrents"  # ✅ Matches Radarr/Sonarr
     restart: unless-stopped
 
   heimdall:
@@ -147,7 +147,7 @@ services:
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
-      - "/home/${USER}/server/configs/heimdall:/config"
+      - "/home/user/server/configs/heimdall:/config"
     ports:
       - "8090:80"
     restart: unless-stopped
