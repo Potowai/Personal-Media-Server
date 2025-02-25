@@ -4,7 +4,7 @@ jackett:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
     volumes:
       - '/home/${USER}/server/configs/jackett:/config'
       - '/home/${USER}/server/torrents:/downloads'
@@ -17,7 +17,7 @@ sonarr:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
     ports:
       - '8989:8989'
     volumes:
@@ -30,7 +30,7 @@ radarr:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
     ports:
       - '7878:7878'
     volumes:
@@ -43,7 +43,7 @@ lidarr:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
     volumes:
       - '/home/${USER}/server/configs/liadarr:/config'
       - '/home/${USER}/server:/data'
@@ -56,7 +56,7 @@ bazarr:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
     volumes:
       - '/home/${USER}/server/configs/bazarr:/config'
       - '/home/${USER}/server:/data'
@@ -71,7 +71,7 @@ plex:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
       - VERSION=docker
     volumes:
       - '/home/${USER}/server/configs/plex:/config'
@@ -86,7 +86,7 @@ jellyfin:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
     ports:
       - '8096:8096'
     devices:
@@ -102,7 +102,7 @@ overseerr:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
     volumes:
       - '/home/${USER}/server/configs/overseerr:/config'
     ports:
@@ -118,7 +118,7 @@ qflood:
       - PUID=1000
       - PGID=1000
       - UMASK=002
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
       - FLOOD_AUTH=false
     volumes:
       - '/home/${USER}/server/configs/qflood:/config'
@@ -130,7 +130,7 @@ heimdall:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
     volumes:
       - '/home/${USER}/server/configs/heimdall:/config'
     ports:
@@ -144,6 +144,6 @@ flaresolverr:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Kolkata
+      - TZ=Europe/Paris
     restart: unless-stopped
 
